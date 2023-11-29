@@ -101,7 +101,7 @@ const Create = () => {
         </Box>
 
         <TextInput
-          label="Invoice Name"
+          label="Customer Name"
           placeholder="Invo"
           {...form.getInputProps("invoiceName")}
         />
@@ -117,18 +117,18 @@ const Create = () => {
         >
           <DatePicker label="Invoice Date" {...form.getInputProps("date")} />
 
-          <TextInput
+          {/* <TextInput
             label="Place"
             placeholder="Miami Florida"
             {...form.getInputProps("place")}
-          />
+          /> */}
 
           <TextInput
             label="From"
             placeholder="Jack"
             {...form.getInputProps("fromName")}
           />
-
+{/* 
           <TextInput
             label="Firm"
             placeholder="Firm"
@@ -157,7 +157,7 @@ const Create = () => {
             label="Account"
             placeholder="88188752422"
             {...form.getInputProps("fromAccount")}
-          />
+          /> */}
         </SimpleGrid>
 
         <Box my={12}>
@@ -191,9 +191,9 @@ const Create = () => {
           <TextInput label="City" placeholder="Miami" {...form.getInputProps("toCity")} />
 
           <TextInput
-            label="PIB"
-            placeholder="11544458355"
-            {...form.getInputProps("toPIB")}
+            label="Phone"
+            placeholder="81234567"
+            {...form.getInputProps("toPhone")}
           />
 
           <TextInput
@@ -250,6 +250,20 @@ const Create = () => {
             );
           })}
         </SimpleGrid>
+        <Button
+        fullWidth
+        variant="light"
+        onClick={() => {
+          const listLength = form.values.invoiceData.length;
+          if (listLength > 1) {
+            form.removeListItem("invoiceData", listLength - 1);
+          }
+        }}
+        disabled={form.values.invoiceData.length <= 1}
+
+      >
+        Delete
+      </Button>
         <Button
           fullWidth
           variant="light"
